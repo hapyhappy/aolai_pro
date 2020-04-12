@@ -2,9 +2,12 @@ test_login:
   test_login_001:
     username: "itfeat"
     password: "itfeat123000"
+    toast: null
   test_login_002:
     username: "itfeat"
     password: "itfeat1230000"
+    toast: "登录密码错误"
   test_login_003:
     password: "itfeat1"
     username: "itfeat123000"
+    toast: "此用户不存在"

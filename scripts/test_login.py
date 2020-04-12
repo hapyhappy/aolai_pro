@@ -20,10 +20,11 @@ class TestLogin:
         time.sleep(2)
         self.driver.quit()
 
-    @pytest.mark.parametrize("args",analyse_data("login_data","test_login"))
-    def test_login(self,args):
+    @pytest.mark.parametrize("args", analyse_data("login_data", "test_login"))
+    def test_login(self, args):
         username = args["username"]
         password = args["password"]
+        toast = args["toast"]
 
         self.home_page.click_close()
         self.home_page.click_me()
@@ -34,3 +35,9 @@ class TestLogin:
         time.sleep(1)
         self.login_page.input_password(password)
         self.login_page.click_login()
+
+        if toast is None:
+            # toast为空，登录成功，验证用户名
+            pass
+        else:
+            self.login_page.is_toast_exit(toast)
